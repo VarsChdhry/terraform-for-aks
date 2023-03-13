@@ -18,15 +18,13 @@ As kubernetes need SP fo managing cluster, create it one
 
 SERVICE_PRINCIPAL_JSON=$(az ad sp create-for-rbac --skip-assignment --name aks-getting-started-sp -o json)
 
-# Keep the `appId` and `password` for later use!
+#extract SP ad SP secret in different ENV var using jq
 
 SERVICE_PRINCIPAL=$(echo $SERVICE_PRINCIPAL_JSON | jq -r '.appId')
 SERVICE_PRINCIPAL_SECRET=$(echo $SERVICE_PRINCIPAL_JSON | jq -r '.password')
 
-#note: reset the credential if you have any sinlge or double quote on password
-az ad sp credential reset --name "aks-getting-started-sp"
 
-# Grant contributor role over the subscription to our service principal
+# Granting contributor role over the subscription to our service principal
 
 az role assignment create --assignee $SERVICE_PRINCIPAL \
 --scope "/subscriptions/$SUBSCRIPTION" \
