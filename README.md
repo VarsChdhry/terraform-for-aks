@@ -1,5 +1,5 @@
 # terraform-for-aks
-# Step for creating AKS cluster via Terraform
+# Step used for creating AKS cluster via Terraform
 
 Login to Azure
 ```#login and set tenant id as env variable
