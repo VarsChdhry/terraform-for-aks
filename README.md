@@ -47,3 +47,5 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
     -var subscription_id=$SUBSCRIPTION \
     -var ssh_key="$SSH_KEY"
 ```
+
+The CDN folder is separate deployment, it deploys Storage account, CDN profile, attached CDN endpoint with hostname origin, and CDN custom domain with CNAME record for that custom domain in Azure DNS zone. 
